@@ -4,16 +4,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C9401FEF-B519-4A00-872E-A2F4CC9002E8}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>HotelZormat.Negociod</RootNamespace>
-    <AssemblyName>HotelZormat.Negociod</AssemblyName>
+    <ProjectGuid>{A56CAC32-FD2C-4781-83F9-D0468B58CC88}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>HotelZormat.tests</RootNamespace>
+    <AssemblyName>HotelZormat.tests</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,6 +24,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -41,18 +43,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
-    <Compile Include="Modelo\Habitacion.cs" />
-    <Compile Include="Modelo\Huesped.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Servicios\ReservaService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\HotelZormat.Datod\HotelZormat.Datod.csproj">
-      <Project>{34448032-432d-41e1-9ef9-c57bff5323a9}</Project>
-      <Name>HotelZormat.Datod</Name>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HotelZormat.Negociod\HotelZormat.Negociod.csproj">
+      <Project>{c9401fef-b519-4a00-872e-a2f4cc9002e8}</Project>
+      <Name>HotelZormat.Negociod</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
