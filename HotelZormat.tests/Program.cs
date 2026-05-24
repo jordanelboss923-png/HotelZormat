@@ -18,8 +18,40 @@ namespace HotelZormat.Tests
             Console.WriteLine("(vacío)   → " + servicio.ValidarTipoHabitacion(""));
             Console.WriteLine("(null)    → " + servicio.ValidarTipoHabitacion(null));
 
+            Console.WriteLine("\n--- RETO 02: ObtenerDescuentoPorTemporada ---");
+            Console.WriteLine("Baja  → " + servicio.ObtenerDescuentoPorTemporada("Baja"));
+            Console.WriteLine("Media → " + servicio.ObtenerDescuentoPorTemporada("Media"));
+            Console.WriteLine("Alta  → " + servicio.ObtenerDescuentoPorTemporada("Alta"));
+            Console.WriteLine("Pico  → " + servicio.ObtenerDescuentoPorTemporada("Pico"));
+
+            try
+            {
+                servicio.ObtenerDescuentoPorTemporada("Otoño");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Otoño → excepción: " + ex.Message);
+            }
+
+            Console.WriteLine("\n--- RETO 03: GenerarLineasFactura ---");
+            var lineas = servicio.GenerarLineasFactura(3, 4500m);
+            Console.WriteLine("Reserva 3 noches a RD$ 4500:");
+            foreach (var linea in lineas)
+            {
+                Console.WriteLine("  " + linea);
+            }
+
+            Console.WriteLine("\nReserva 0 noches:");
+            var vacia = servicio.GenerarLineasFactura(0, 2000m);
+            Console.WriteLine("  Total líneas: " + vacia.Count);
+
             Console.WriteLine("\n--- Tests finalizados ---");
             Console.ReadKey();
+
+            for (int i = 1; i <= 10; i++)
+            {
+                Console.WriteLine("7 x " + i + " = " + (7 * i));
+            }
         }
     }
 }
