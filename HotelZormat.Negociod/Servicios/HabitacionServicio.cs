@@ -1,4 +1,4 @@
-﻿using HotelZormat.Modelos;
+﻿using HotelZormat.Negocio.Modelo;
 using HotelZormat.Negocio.Modelo;
 using System;
 using System.Collections.Generic;

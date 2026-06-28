@@ -144,5 +144,116 @@ namespace HotelZormat.UI
                     break;
             }
         }
+
+        private void btnConfirmar_Click(object sender, EventArgs e)
+        {
+            DialogResult respuesta;
+
+            switch (cboAccion.Text)
+            {
+                case "Check In":
+                    respuesta = MessageBox.Show(
+                        "¿Desea realizar el Check In de esta habitación?",
+                        "Confirmar",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Question);
+                    break;
+
+                case "Check Out":
+                    respuesta = MessageBox.Show(
+                        "¿Desea realizar el Check Out de esta habitación?",
+                        "Confirmar",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Question);
+                    break;
+
+                case "Reservar":
+                    respuesta = MessageBox.Show(
+                        "¿Desea reservar esta habitación?",
+                        "Confirmar",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Question);
+                    break;
+
+                case "Limpiar":
+                    respuesta = MessageBox.Show(
+                        "¿Desea enviar esta habitación a limpieza?",
+                        "Confirmar",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Question);
+                    break;
+
+                default:
+                    MessageBox.Show("Seleccione una acción.");
+                    break;
+            }
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int numero = Convert.ToInt32(txtNumero.Text);
+
+                Habitacion habitacion = servicio.Buscar(numero);
+
+                if (habitacion != null)
+                {
+                    cboTipo.Text = habitacion.Tipo;
+
+                    CambiarColorEstado(habitacion.Estado);
+
+                    ConfigurarBotones(habitacion.Estado);
+                }
+                else
+                {
+                    MessageBox.Show("La habitación no existe.");
+                }
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show(
+                    "Debe escribir un número válido.",
+                    "Advertencia",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+            }
+        }
+
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            btnGuardar.Enabled = false;
+
+            try
+            {
+                Habitacion h = new Habitacion();
+
+                h.Numero = Convert.ToInt32(txtNumero.Text);
+                h.Piso = 3;
+                h.Tipo = cboTipo.Text;
+                h.Estado = lblEstado.Text;
+
+                servicio.Guardar(h);
+
+                MessageBox.Show("Habitación guardada correctamente.");
+
+                CargarHabitacionesPiso3();
+            }
+            catch (HabitacionOcupadaException ex)
+            {
+                MessageBox.Show(
+                    "La habitación " +
+                    ex.NumeroHabitacion +
+                    " está ocupada.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                btnGuardar.Enabled = true;
+            }
+        }
     }
 }
