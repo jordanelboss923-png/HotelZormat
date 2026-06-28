@@ -74,5 +74,75 @@ namespace HotelZormat.UI
                     break;
             }
         }
+        private decimal ObtenerTarifa(string tipo)
+        {
+            switch (tipo)
+            {
+                case "Simple":
+                    return 2500;
+
+                case "Doble":
+                    return 4000;
+
+                case "Suite":
+                    return 7000;
+
+                default:
+                    throw new ArgumentException("Tipo inválido");
+            }
+        }
+        private void CambiarColorEstado(string estado)
+        {
+            switch (estado)
+            {
+                case "Disponible":
+                    lblEstado.ForeColor = Color.Green;
+                    break;
+
+                case "Ocupada":
+                    lblEstado.ForeColor = Color.Red;
+                    break;
+
+                case "Reservada":
+                    lblEstado.ForeColor = Color.Blue;
+                    break;
+
+                case "Limpieza":
+                    lblEstado.ForeColor = Color.Orange;
+                    break;
+
+                default:
+                    lblEstado.ForeColor = Color.Black;
+                    break;
+            }
+
+            lblEstado.Text = estado;
+        }
+        private void ConfigurarBotones(string estado)
+        {
+            btnCheckIn.Enabled = false;
+            btnCheckOut.Enabled = false;
+            btnReservar.Enabled = false;
+            btnLimpiar.Enabled = false;
+
+            switch (estado)
+            {
+                case "Disponible":
+                    btnCheckIn.Enabled = true;
+                    break;
+
+                case "Ocupada":
+                    btnCheckOut.Enabled = true;
+                    break;
+
+                case "Reservada":
+                    btnReservar.Enabled = true;
+                    break;
+
+                case "Limpieza":
+                    btnLimpiar.Enabled = true;
+                    break;
+            }
+        }
     }
 }
