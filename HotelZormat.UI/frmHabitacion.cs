@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using HotelZormat.Negocio.Modelo;
+using HotelZormat.Negocio.Servicios;
 
 namespace HotelZormat.UI
 {
@@ -15,6 +17,11 @@ namespace HotelZormat.UI
         public frmHabitacion()
         {
             InitializeComponent();
+        }
+
+        private void frmHabitacion_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
