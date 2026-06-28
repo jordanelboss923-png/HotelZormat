@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace HotelZormat.UI
 {
-    public partial class FrmPrincipal : Form
+    public partial class frmHabitacion : Form
     {
-        public FrmPrincipal()
+        public frmHabitacion()
         {
             InitializeComponent();
-        }
-
-        private void FrmPrincipal_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }
