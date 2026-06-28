@@ -41,6 +41,7 @@
             this.btnCheckOut = new System.Windows.Forms.Button();
             this.btnReservar = new System.Windows.Forms.Button();
             this.btnLimpiar = new System.Windows.Forms.Button();
+            this.lblTarifa = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txtNumero
@@ -88,9 +89,9 @@
             this.lblIcono.AutoSize = true;
             this.lblIcono.Location = new System.Drawing.Point(247, 208);
             this.lblIcono.Name = "lblIcono";
-            this.lblIcono.Size = new System.Drawing.Size(34, 13);
+            this.lblIcono.Size = new System.Drawing.Size(19, 13);
             this.lblIcono.TabIndex = 5;
-            this.lblIcono.Text = "Cama";
+            this.lblIcono.Text = "🛌";
             // 
             // btnBuscar
             // 
@@ -158,11 +159,21 @@
             this.btnLimpiar.Text = "Limpiar";
             this.btnLimpiar.UseVisualStyleBackColor = true;
             // 
+            // lblTarifa
+            // 
+            this.lblTarifa.AutoSize = true;
+            this.lblTarifa.Location = new System.Drawing.Point(248, 242);
+            this.lblTarifa.Name = "lblTarifa";
+            this.lblTarifa.Size = new System.Drawing.Size(86, 13);
+            this.lblTarifa.TabIndex = 13;
+            this.lblTarifa.Text = "Tarifa: RD$ 0.00";
+            // 
             // frmHabitacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lblTarifa);
             this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.btnReservar);
             this.Controls.Add(this.btnCheckOut);
@@ -199,5 +210,6 @@
         private System.Windows.Forms.Button btnCheckOut;
         private System.Windows.Forms.Button btnReservar;
         private System.Windows.Forms.Button btnLimpiar;
+        private System.Windows.Forms.Label lblTarifa;
     }
 }

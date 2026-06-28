@@ -73,6 +73,14 @@ namespace HotelZormat.UI
                     lblIcono.Text = "❓";
                     break;
             }
+            try
+            {
+                lblTarifa.Text = "Tarifa: RD$ " + ObtenerTarifa(cboTipo.Text).ToString("N2");
+            }
+            catch (ArgumentException ex)
+            {
+                lblTarifa.Text = ex.Message;
+            }
         }
         private decimal ObtenerTarifa(string tipo)
         {
