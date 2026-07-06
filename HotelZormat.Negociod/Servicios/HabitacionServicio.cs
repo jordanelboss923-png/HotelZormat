@@ -8,37 +8,57 @@ namespace HotelZormat.Negocio.Servicios
 {
     public class HabitacionService
     {
-        private List<Habitacion> habitaciones;
+        private List<Habitacion> _habitaciones;
 
         public HabitacionService()
         {
-            habitaciones = new List<Habitacion>()
+            _habitaciones = new List<Habitacion>()
             {
-                new Habitacion{Numero=301,Piso=3,Tipo="Simple",Estado="Disponible"},
-                new Habitacion{Numero=302,Piso=3,Tipo="Doble",Estado="Reservada"},
-                new Habitacion{Numero=303,Piso=3,Tipo="Suite",Estado="Ocupada"},
-                new Habitacion{Numero=304,Piso=3,Tipo="Simple",Estado="Limpieza"},
-                new Habitacion{Numero=401,Piso=4,Tipo="Suite",Estado="Disponible"},
-                new Habitacion{Numero=402,Piso=4,Tipo="Doble",Estado="Disponible"}
+                new Habitacion{Numero=101,Tipo="Sencilla",Piso = 1,Estado="Disponible",Capacidad = 1},
+                new Habitacion{Numero=202,Tipo="Doble",Piso = 2,Estado="Reservada",Capacidad = 2},
+                new Habitacion{Numero=301,Tipo="Sencilla",Piso = 3,Estado="Disponible",Capacidad = 1},
+                new Habitacion{Numero=302,Tipo="Doble",Piso = 3,Estado="Limpieza",Capacidad = 2},
+                new Habitacion{Numero=305,Tipo="Suite",Piso = 3,Estado="Ocupada",Capacidad = 4},
+                new Habitacion{Numero=306,Tipo="Suite",Piso = 3,Estado="Disponible",Capacidad = 4},
+                new Habitacion{Numero=401,Tipo="Suite",Piso = 4,Estado="Reservada",Capacidad = 4}
             };
         }
 
-        public List<Habitacion> ObtenerHabitaciones()
+        public List<Habitacion> ObtenerTodas()
         {
-            return habitaciones;
+            return _habitaciones;
         }
 
         public Habitacion Buscar(int numero)
         {
-            return habitaciones.FirstOrDefault(h => h.Numero == numero);
+            foreach (var hab in _habitaciones)
+            {
+                if (hab.Numero == numero) return hab;
+                
+            }
+            return null;
         }
 
         public void Guardar(Habitacion habitacion)
         {
-            if (habitacion.Estado == "Ocupada")
-                throw new HabitacionOcupadaException(habitacion.Numero);
+            if (habitacion == null)
+                throw new ArgumentNullException("habitacion");
 
-            habitaciones.Add(habitacion);
+            var existente = Buscar(habitacion.Numero);
+            if (existente != null &&
+                existente.Estado == "Ocupada" &&
+                habitacion.Estado == "Disponible")
+            {
+                throw new InvalidOperationException(
+                    "Debe pasar por Limpieza antes de liberar.");
+            }
+
+            if (existente != null)
+            {
+                existente.Estado = habitacion.Estado;
+                existente.Tipo = habitacion.Tipo;
+            
+            }
         }
     }
 }

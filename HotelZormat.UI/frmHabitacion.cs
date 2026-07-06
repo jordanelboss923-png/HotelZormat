@@ -75,11 +75,11 @@ namespace HotelZormat.UI
             }
             try
             {
-                lblTarifa.Text = "Tarifa: RD$ " + ObtenerTarifa(cboTipo.Text).ToString("N2");
+                label6.Text = "Tarifa: RD$ " + ObtenerTarifa(cboTipo.Text).ToString("N2");
             }
             catch (ArgumentException ex)
             {
-                lblTarifa.Text = ex.Message;
+                label6.Text = ex.Message;
             }
         }
         private decimal ObtenerTarifa(string tipo)
@@ -262,6 +262,11 @@ namespace HotelZormat.UI
             {
                 btnGuardar.Enabled = true;
             }
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
