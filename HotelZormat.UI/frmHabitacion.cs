@@ -42,7 +42,7 @@ namespace HotelZormat.UI
         {
             lstHabitaciones.Items.Clear();
 
-            foreach (Habitacion h in servicio.ObtenerHabitaciones())
+            foreach (Habitacion h in servicio.ObtenerTodas())
             {
                 if (h.Piso == 3)
                 {
