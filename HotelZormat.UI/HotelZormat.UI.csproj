@@ -89,6 +89,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\HotelZormat.Modelo\HotelZormat.Modelo.csproj">
+      <Project>{ac416f58-fdca-415f-91ad-bc67f89d24e7}</Project>
+      <Name>HotelZormat.Modelo</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HotelZormat.Negociod\HotelZormat.Negociod.csproj">
       <Project>{c9401fef-b519-4a00-872e-a2f4cc9002e8}</Project>
       <Name>HotelZormat.Negociod</Name>

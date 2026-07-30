@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace HotelZormat.Negocio.Modelo
+namespace HotelZormat.Modelo
 {
     /// <summary>
     /// Representa una habitación del hotel.

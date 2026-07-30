@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace HotelZormat.Negocio.Modelo
+namespace HotelZormat.Modelo
 {
     /// <summary>
     /// Representa un huésped del hotel (con cédula o pasaporte).

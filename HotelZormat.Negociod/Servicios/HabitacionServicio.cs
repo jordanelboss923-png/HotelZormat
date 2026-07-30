@@ -1,6 +1,6 @@
 ﻿using HotelZormat.Datos.Repositorios;
-using HotelZormat.Negocio.Modelo;
-using HotelZormat.Negocio.Modelo;
+using HotelZormat.Modelo;
+using HotelZormat.Modelo;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,3 +33,4 @@ namespace HotelZormat.Negocio.Servicios
             _repositorio.Actualizar(habitacion);
         }
     }
+}
