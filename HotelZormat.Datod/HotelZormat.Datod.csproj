@@ -46,6 +46,7 @@
     <Compile Include="Conexion\ConexionDB.cs" />
     <Compile Include="ConfiguracioDBS.cs" />
     <Compile Include="HabitacionRepositorio.cs" />
+    <Compile Include="HuespedRepositorio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
