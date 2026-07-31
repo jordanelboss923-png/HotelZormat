@@ -239,7 +239,14 @@ namespace HotelZormat.UI
                 h.Numero = Convert.ToInt32(txtNumero.Text);
                 h.Piso = 3;
                 h.Tipo = cboTipo.Text;
-                h.Estado = lblEstado.Text;
+                h.Capacidad = 2; // ajusta si tienes un control para esto
+                h.TarifaBase = ObtenerTarifa(cboTipo.Text);
+
+                // Si el label todavía tiene el texto por defecto del diseñador,
+                // es una habitación nueva -> Disponible
+                h.Estado = (lblEstado.Text == "Estado:" || string.IsNullOrWhiteSpace(lblEstado.Text))
+                    ? "Disponible"
+                    : lblEstado.Text;
 
                 servicio.Guardar(h);
 
@@ -247,12 +254,14 @@ namespace HotelZormat.UI
 
                 CargarHabitacionesPiso3();
             }
+            catch (FormatException)
+            {
+                MessageBox.Show("El número de habitación debe ser numérico.",
+                    "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
             catch (HabitacionOcupadaException ex)
             {
-                MessageBox.Show(
-                    "La habitación " +
-                    ex.NumeroHabitacion +
-                    " está ocupada.");
+                MessageBox.Show("La habitación " + ex.NumeroHabitacion + " está ocupada.");
             }
             catch (Exception ex)
             {
@@ -267,6 +276,40 @@ namespace HotelZormat.UI
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int numero = Convert.ToInt32(txtNumero.Text);
+
+                DialogResult respuesta = MessageBox.Show(
+                    "¿Seguro que desea eliminar la habitación " + numero + "?",
+                    "Confirmar",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
+
+                if (respuesta == DialogResult.Yes)
+                {
+                    servicio.Eliminar(numero);
+                    MessageBox.Show("Habitación eliminada.");
+                    CargarHabitacionesPiso3();
+                }
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Debe escribir un número válido.",
+                    "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            catch (HabitacionOcupadaException ex)
+            {
+                MessageBox.Show("No se puede eliminar: la habitación " + ex.NumeroHabitacion + " está ocupada.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

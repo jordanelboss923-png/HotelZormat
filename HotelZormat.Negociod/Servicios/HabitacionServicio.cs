@@ -23,13 +23,30 @@ namespace HotelZormat.Negocio.Servicios
         public void Guardar(Habitacion habitacion)
         {
             var existente = Buscar(habitacion.Numero);
-            if (existente != null &&
-                existente.Estado == "Ocupada" &&
-                habitacion.Estado == "Disponible")
+
+            if (existente == null)
             {
-                throw new HabitacionOcupadaException(habitacion.Numero);
+                // No existe todavía -> es una habitación nueva
+                _repositorio.Insertar(habitacion);
             }
-            _repositorio.Actualizar(habitacion);
+            else
+            {
+                if (existente.Estado == "Ocupada" && habitacion.Estado == "Disponible")
+                {
+                    throw new HabitacionOcupadaException(habitacion.Numero);
+                }
+                _repositorio.Actualizar(habitacion);
+            }
+        }
+
+        public void Eliminar(int numero)
+        {
+            var existente = Buscar(numero);
+            if (existente != null && existente.Estado == "Ocupada")
+            {
+                throw new HabitacionOcupadaException(numero);
+            }
+            _repositorio.Eliminar(numero);
         }
     }
 }

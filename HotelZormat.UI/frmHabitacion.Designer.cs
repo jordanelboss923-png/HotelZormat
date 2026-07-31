@@ -54,6 +54,7 @@
             this.btnConfirmar = new System.Windows.Forms.Button();
             this.cboAccion = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.btnEliminar = new System.Windows.Forms.Button();
             this.gbTipo.SuspendLayout();
             this.gbBuscar.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -267,6 +268,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btnEliminar);
             this.groupBox2.Controls.Add(this.btnGuardar);
             this.groupBox2.Controls.Add(this.btnConfirmar);
             this.groupBox2.Controls.Add(this.cboAccion);
@@ -325,6 +327,19 @@
             this.label2.TabIndex = 5;
             this.label2.Text = "Acción:";
             // 
+            // btnEliminar
+            // 
+            this.btnEliminar.BackColor = System.Drawing.Color.OrangeRed;
+            this.btnEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEliminar.ForeColor = System.Drawing.Color.White;
+            this.btnEliminar.Location = new System.Drawing.Point(322, 24);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(152, 23);
+            this.btnEliminar.TabIndex = 12;
+            this.btnEliminar.Text = "Eliminar Cambios";
+            this.btnEliminar.UseVisualStyleBackColor = false;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
+            // 
             // frmHabitacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -380,5 +395,6 @@
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Button btnConfirmar;
         private System.Windows.Forms.ComboBox cboAccion;
+        private System.Windows.Forms.Button btnEliminar;
     }
 }
