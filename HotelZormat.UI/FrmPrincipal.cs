@@ -21,5 +21,11 @@ namespace HotelZormat.UI
         {
 
         }
+
+        private void btnHuesped_Click(object sender, EventArgs e)
+        {
+            frmHuesped f = new frmHuesped();
+            f.ShowDialog();
+        }
     }
 }
