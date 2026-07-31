@@ -1,6 +1,5 @@
 ﻿using HotelZormat.Datos.Repositorios;
 using HotelZormat.Modelo;
-using HotelZormat.Modelo;
 using System;
 using System.Collections.Generic;
 using System.Linq;

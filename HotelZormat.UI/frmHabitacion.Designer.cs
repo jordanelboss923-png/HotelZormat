@@ -29,31 +29,31 @@
         private void InitializeComponent()
         {
             this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.lblIcono = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.gbTipo = new System.Windows.Forms.GroupBox();
+            this.lblTarifa = new System.Windows.Forms.Label();
+            this.cboTipo = new System.Windows.Forms.ComboBox();
             this.gbBuscar = new System.Windows.Forms.GroupBox();
+            this.lblEstado = new System.Windows.Forms.Label();
+            this.btnBuscar = new System.Windows.Forms.Button();
+            this.txtNumero = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.lblHabitacion = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.cboTipo = new System.Windows.Forms.ComboBox();
-            this.lblTarifa = new System.Windows.Forms.Label();
-            this.txtNumero = new System.Windows.Forms.TextBox();
-            this.btnBuscar = new System.Windows.Forms.Button();
-            this.lblEstado = new System.Windows.Forms.Label();
-            this.lsthabitaciones = new System.Windows.Forms.ListBox();
+            this.lstHabitaciones = new System.Windows.Forms.ListBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnReservar = new System.Windows.Forms.Button();
-            this.btnCheckIn = new System.Windows.Forms.Button();
-            this.btnCheckOut = new System.Windows.Forms.Button();
             this.btnLimpiar = new System.Windows.Forms.Button();
+            this.btnCheckOut = new System.Windows.Forms.Button();
+            this.btnCheckIn = new System.Windows.Forms.Button();
+            this.btnReservar = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.cboAccion = new System.Windows.Forms.ComboBox();
-            this.btnConfirmar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
+            this.btnConfirmar = new System.Windows.Forms.Button();
+            this.cboAccion = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.gbTipo.SuspendLayout();
             this.gbBuscar.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -70,14 +70,14 @@
             this.label4.TabIndex = 3;
             this.label4.Text = "Tipo:";
             // 
-            // label5
+            // lblIcono
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(11, 50);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(37, 13);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "Icono:";
+            this.lblIcono.AutoSize = true;
+            this.lblIcono.Location = new System.Drawing.Point(11, 50);
+            this.lblIcono.Name = "lblIcono";
+            this.lblIcono.Size = new System.Drawing.Size(37, 13);
+            this.lblIcono.TabIndex = 4;
+            this.lblIcono.Text = "Icono:";
             // 
             // label6
             // 
@@ -103,7 +103,7 @@
             this.gbTipo.Controls.Add(this.cboTipo);
             this.gbTipo.Controls.Add(this.label4);
             this.gbTipo.Controls.Add(this.label7);
-            this.gbTipo.Controls.Add(this.label5);
+            this.gbTipo.Controls.Add(this.lblIcono);
             this.gbTipo.Controls.Add(this.label6);
             this.gbTipo.Location = new System.Drawing.Point(31, 28);
             this.gbTipo.Name = "gbTipo";
@@ -111,6 +111,25 @@
             this.gbTipo.TabIndex = 7;
             this.gbTipo.TabStop = false;
             this.gbTipo.Text = "Tipo de habitacion";
+            // 
+            // lblTarifa
+            // 
+            this.lblTarifa.AutoSize = true;
+            this.lblTarifa.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTarifa.Location = new System.Drawing.Point(54, 80);
+            this.lblTarifa.Name = "lblTarifa";
+            this.lblTarifa.Size = new System.Drawing.Size(43, 13);
+            this.lblTarifa.TabIndex = 8;
+            this.lblTarifa.Text = "RD$ 0";
+            // 
+            // cboTipo
+            // 
+            this.cboTipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboTipo.FormattingEnabled = true;
+            this.cboTipo.Location = new System.Drawing.Point(57, 22);
+            this.cboTipo.Name = "cboTipo";
+            this.cboTipo.Size = new System.Drawing.Size(121, 21);
+            this.cboTipo.TabIndex = 7;
             // 
             // gbBuscar
             // 
@@ -126,6 +145,31 @@
             this.gbBuscar.TabIndex = 8;
             this.gbBuscar.TabStop = false;
             this.gbBuscar.Text = "Buscar Habitacion";
+            // 
+            // lblEstado
+            // 
+            this.lblEstado.AutoSize = true;
+            this.lblEstado.Location = new System.Drawing.Point(60, 80);
+            this.lblEstado.Name = "lblEstado";
+            this.lblEstado.Size = new System.Drawing.Size(10, 13);
+            this.lblEstado.TabIndex = 8;
+            this.lblEstado.Text = "-";
+            // 
+            // btnBuscar
+            // 
+            this.btnBuscar.Location = new System.Drawing.Point(201, 20);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(75, 23);
+            this.btnBuscar.TabIndex = 7;
+            this.btnBuscar.Text = "Buscar";
+            this.btnBuscar.UseVisualStyleBackColor = true;
+            // 
+            // txtNumero
+            // 
+            this.txtNumero.Location = new System.Drawing.Point(64, 22);
+            this.txtNumero.Name = "txtNumero";
+            this.txtNumero.Size = new System.Drawing.Size(131, 20);
+            this.txtNumero.TabIndex = 6;
             // 
             // label1
             // 
@@ -156,7 +200,7 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.lsthabitaciones);
+            this.groupBox3.Controls.Add(this.lstHabitaciones);
             this.groupBox3.Location = new System.Drawing.Point(549, 28);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(123, 132);
@@ -164,57 +208,13 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Habitaciones";
             // 
-            // cboTipo
+            // lstHabitaciones
             // 
-            this.cboTipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboTipo.FormattingEnabled = true;
-            this.cboTipo.Location = new System.Drawing.Point(57, 22);
-            this.cboTipo.Name = "cboTipo";
-            this.cboTipo.Size = new System.Drawing.Size(121, 21);
-            this.cboTipo.TabIndex = 7;
-            // 
-            // lblTarifa
-            // 
-            this.lblTarifa.AutoSize = true;
-            this.lblTarifa.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTarifa.Location = new System.Drawing.Point(54, 80);
-            this.lblTarifa.Name = "lblTarifa";
-            this.lblTarifa.Size = new System.Drawing.Size(43, 13);
-            this.lblTarifa.TabIndex = 8;
-            this.lblTarifa.Text = "RD$ 0";
-            // 
-            // txtNumero
-            // 
-            this.txtNumero.Location = new System.Drawing.Point(64, 22);
-            this.txtNumero.Name = "txtNumero";
-            this.txtNumero.Size = new System.Drawing.Size(131, 20);
-            this.txtNumero.TabIndex = 6;
-            // 
-            // btnBuscar
-            // 
-            this.btnBuscar.Location = new System.Drawing.Point(201, 20);
-            this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(75, 23);
-            this.btnBuscar.TabIndex = 7;
-            this.btnBuscar.Text = "Buscar";
-            this.btnBuscar.UseVisualStyleBackColor = true;
-            // 
-            // lblEstado
-            // 
-            this.lblEstado.AutoSize = true;
-            this.lblEstado.Location = new System.Drawing.Point(60, 80);
-            this.lblEstado.Name = "lblEstado";
-            this.lblEstado.Size = new System.Drawing.Size(10, 13);
-            this.lblEstado.TabIndex = 8;
-            this.lblEstado.Text = "-";
-            // 
-            // lsthabitaciones
-            // 
-            this.lsthabitaciones.FormattingEnabled = true;
-            this.lsthabitaciones.Location = new System.Drawing.Point(0, 22);
-            this.lsthabitaciones.Name = "lsthabitaciones";
-            this.lsthabitaciones.Size = new System.Drawing.Size(120, 95);
-            this.lsthabitaciones.TabIndex = 0;
+            this.lstHabitaciones.FormattingEnabled = true;
+            this.lstHabitaciones.Location = new System.Drawing.Point(0, 22);
+            this.lstHabitaciones.Name = "lstHabitaciones";
+            this.lstHabitaciones.Size = new System.Drawing.Size(120, 95);
+            this.lstHabitaciones.TabIndex = 0;
             // 
             // groupBox1
             // 
@@ -229,23 +229,14 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Acciones";
             // 
-            // btnReservar
+            // btnLimpiar
             // 
-            this.btnReservar.Location = new System.Drawing.Point(6, 19);
-            this.btnReservar.Name = "btnReservar";
-            this.btnReservar.Size = new System.Drawing.Size(75, 23);
-            this.btnReservar.TabIndex = 0;
-            this.btnReservar.Text = "Reservar";
-            this.btnReservar.UseVisualStyleBackColor = true;
-            // 
-            // btnCheckIn
-            // 
-            this.btnCheckIn.Location = new System.Drawing.Point(157, 19);
-            this.btnCheckIn.Name = "btnCheckIn";
-            this.btnCheckIn.Size = new System.Drawing.Size(75, 23);
-            this.btnCheckIn.TabIndex = 1;
-            this.btnCheckIn.Text = "Check-In";
-            this.btnCheckIn.UseVisualStyleBackColor = true;
+            this.btnLimpiar.Location = new System.Drawing.Point(518, 19);
+            this.btnLimpiar.Name = "btnLimpiar";
+            this.btnLimpiar.Size = new System.Drawing.Size(75, 23);
+            this.btnLimpiar.TabIndex = 3;
+            this.btnLimpiar.Text = "Limpiar";
+            this.btnLimpiar.UseVisualStyleBackColor = true;
             // 
             // btnCheckOut
             // 
@@ -256,14 +247,23 @@
             this.btnCheckOut.Text = "Check-Out";
             this.btnCheckOut.UseVisualStyleBackColor = true;
             // 
-            // btnLimpiar
+            // btnCheckIn
             // 
-            this.btnLimpiar.Location = new System.Drawing.Point(518, 19);
-            this.btnLimpiar.Name = "btnLimpiar";
-            this.btnLimpiar.Size = new System.Drawing.Size(75, 23);
-            this.btnLimpiar.TabIndex = 3;
-            this.btnLimpiar.Text = "Limpiar";
-            this.btnLimpiar.UseVisualStyleBackColor = true;
+            this.btnCheckIn.Location = new System.Drawing.Point(157, 19);
+            this.btnCheckIn.Name = "btnCheckIn";
+            this.btnCheckIn.Size = new System.Drawing.Size(75, 23);
+            this.btnCheckIn.TabIndex = 1;
+            this.btnCheckIn.Text = "Check-In";
+            this.btnCheckIn.UseVisualStyleBackColor = true;
+            // 
+            // btnReservar
+            // 
+            this.btnReservar.Location = new System.Drawing.Point(6, 19);
+            this.btnReservar.Name = "btnReservar";
+            this.btnReservar.Size = new System.Drawing.Size(75, 23);
+            this.btnReservar.TabIndex = 0;
+            this.btnReservar.Text = "Reservar";
+            this.btnReservar.UseVisualStyleBackColor = true;
             // 
             // groupBox2
             // 
@@ -278,14 +278,26 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Confimar y Guardar";
             // 
-            // label2
+            // btnGuardar
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(11, 29);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(43, 13);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Acción:";
+            this.btnGuardar.BackColor = System.Drawing.Color.OrangeRed;
+            this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuardar.ForeColor = System.Drawing.Color.White;
+            this.btnGuardar.Location = new System.Drawing.Point(480, 24);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(152, 23);
+            this.btnGuardar.TabIndex = 11;
+            this.btnGuardar.Text = "Guardar Cambios";
+            this.btnGuardar.UseVisualStyleBackColor = false;
+            // 
+            // btnConfirmar
+            // 
+            this.btnConfirmar.Location = new System.Drawing.Point(214, 24);
+            this.btnConfirmar.Name = "btnConfirmar";
+            this.btnConfirmar.Size = new System.Drawing.Size(75, 23);
+            this.btnConfirmar.TabIndex = 10;
+            this.btnConfirmar.Text = "Confirmar";
+            this.btnConfirmar.UseVisualStyleBackColor = true;
             // 
             // cboAccion
             // 
@@ -304,26 +316,14 @@
             this.cboAccion.Size = new System.Drawing.Size(121, 21);
             this.cboAccion.TabIndex = 9;
             // 
-            // btnConfirmar
+            // label2
             // 
-            this.btnConfirmar.Location = new System.Drawing.Point(214, 24);
-            this.btnConfirmar.Name = "btnConfirmar";
-            this.btnConfirmar.Size = new System.Drawing.Size(75, 23);
-            this.btnConfirmar.TabIndex = 10;
-            this.btnConfirmar.Text = "Confirmar";
-            this.btnConfirmar.UseVisualStyleBackColor = true;
-            // 
-            // btnGuardar
-            // 
-            this.btnGuardar.BackColor = System.Drawing.Color.OrangeRed;
-            this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGuardar.ForeColor = System.Drawing.Color.White;
-            this.btnGuardar.Location = new System.Drawing.Point(480, 24);
-            this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(152, 23);
-            this.btnGuardar.TabIndex = 11;
-            this.btnGuardar.Text = "Guardar Cambios";
-            this.btnGuardar.UseVisualStyleBackColor = false;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(11, 29);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(43, 13);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Acción:";
             // 
             // frmHabitacion
             // 
@@ -355,7 +355,7 @@
 
         #endregion
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lblIcono;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.GroupBox gbTipo;
@@ -369,7 +369,7 @@
         private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.TextBox txtNumero;
         private System.Windows.Forms.Label lblEstado;
-        private System.Windows.Forms.ListBox lsthabitaciones;
+        private System.Windows.Forms.ListBox lstHabitaciones;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnCheckOut;
         private System.Windows.Forms.Button btnCheckIn;

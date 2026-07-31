@@ -8,11 +8,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using HotelZormat.Negocio.Servicios;
 
 namespace HotelZormat.UI
 {
     public partial class frmHuesped : Form
     {
+        private HuespedService servicio = new HuespedService();
         public frmHuesped()
         {
             InitializeComponent();
