@@ -1,4 +1,5 @@
-﻿using HotelZormat.Modelo;
+﻿// Cédula: 402-1145957-9
+using HotelZormat.Modelo;
 using HotelZormat.Negocio.Servicios;
 using HotelZormat.Negociod.Servicios;
 using System;
@@ -364,6 +365,11 @@ namespace HotelZormat.UI
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

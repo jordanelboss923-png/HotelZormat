@@ -40,6 +40,7 @@
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.cboTipoDocumento = new System.Windows.Forms.ComboBox();
             this.lstHuespedes = new System.Windows.Forms.ListBox();
+            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.SuspendLayout();
             // 
             // txtDocumento
@@ -140,11 +141,27 @@
             this.lstHuespedes.Size = new System.Drawing.Size(120, 95);
             this.lstHuespedes.TabIndex = 10;
             // 
+            // guna2Button1
+            // 
+            this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.guna2Button1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.guna2Button1.ForeColor = System.Drawing.Color.White;
+            this.guna2Button1.Location = new System.Drawing.Point(453, 169);
+            this.guna2Button1.Name = "guna2Button1";
+            this.guna2Button1.Size = new System.Drawing.Size(180, 45);
+            this.guna2Button1.TabIndex = 11;
+            this.guna2Button1.Text = "guna2Button1";
+            this.guna2Button1.Click += new System.EventHandler(this.guna2Button1_Click);
+            // 
             // frmHuesped
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.guna2Button1);
             this.Controls.Add(this.lstHuespedes);
             this.Controls.Add(this.cboTipoDocumento);
             this.Controls.Add(this.btnLimpiar);
@@ -179,5 +196,6 @@
         private System.Windows.Forms.Button btnLimpiar;
         private System.Windows.Forms.ComboBox cboTipoDocumento;
         private System.Windows.Forms.ListBox lstHuespedes;
+        private Guna.UI2.WinForms.Guna2Button guna2Button1;
     }
 }

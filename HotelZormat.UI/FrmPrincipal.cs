@@ -1,4 +1,5 @@
-﻿using HotelZormat.Modelo;
+﻿// Cédula: 402-1145957-9
+using HotelZormat.Modelo;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,6 +15,7 @@ namespace HotelZormat.UI
     public partial class FrmPrincipal : Form
     {
         private Usuario usuarioActual;
+        private int matricula = 20243553; // Jordan Alexander Guzman Cedano - 2024-3553
         public FrmPrincipal(Usuario usuario)
         {
             InitializeComponent();

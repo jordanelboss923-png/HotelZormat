@@ -1,4 +1,5 @@
-﻿using HotelZormat.Modelo;
+﻿// Cédula: 402-1145957-9
+using HotelZormat.Modelo;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -174,6 +175,11 @@ namespace HotelZormat.UI
             txtNacionalidad.Text = "";
             txtTelefono.Text = "";
             txtEmail.Text = "";
+        }
+
+        private void guna2Button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
