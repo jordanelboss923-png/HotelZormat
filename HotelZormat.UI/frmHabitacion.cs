@@ -1,15 +1,16 @@
-﻿using System;
+﻿using HotelZormat.Modelo;
+using HotelZormat.Negocio.Servicios;
+using HotelZormat.Negociod.Servicios;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using HotelZormat.Modelo;
-using HotelZormat.Negocio.Servicios;
-using System.Data.SqlClient;
 
 namespace HotelZormat.UI
 {
@@ -154,47 +155,70 @@ namespace HotelZormat.UI
             }
         }
 
+        private EstadiaService servicioEstadia = new EstadiaService();
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
-            DialogResult respuesta;
-
-            switch (cboAccion.Text)
+            try
             {
-                case "Check In":
-                    respuesta = MessageBox.Show(
-                        "¿Desea realizar el Check In de esta habitación?",
-                        "Confirmar",
-                        MessageBoxButtons.YesNo,
-                        MessageBoxIcon.Question);
-                    break;
+                int numeroHab = Convert.ToInt32(txtNumero.Text);
+                Habitacion habitacion = servicio.Buscar(numeroHab);
+                if (habitacion == null) { MessageBox.Show("Habitación no encontrada."); return; }
 
-                case "Check Out":
-                    respuesta = MessageBox.Show(
-                        "¿Desea realizar el Check Out de esta habitación?",
-                        "Confirmar",
-                        MessageBoxButtons.YesNo,
-                        MessageBoxIcon.Question);
-                    break;
+                switch (cboAccion.Text)
+                {
+                    case "Check In":
+                        HuespedService servicioHuesped = new HuespedService();
+                        Huesped huesped = servicioHuesped.Buscar(txtDocumentoHuesped.Text);
+                        if (huesped == null) { MessageBox.Show("Huésped no encontrado."); return; }
 
-                case "Reservar":
-                    respuesta = MessageBox.Show(
-                        "¿Desea reservar esta habitación?",
-                        "Confirmar",
-                        MessageBoxButtons.YesNo,
-                        MessageBoxIcon.Question);
-                    break;
+                        DialogResult r1 = MessageBox.Show("¿Confirmar Check In?", "Confirmar",
+                            MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        if (r1 == DialogResult.Yes)
+                        {
+                            servicioEstadia.RealizarCheckIn(habitacion.Id, huesped.Id, cboTemporada.Text);
+                            MessageBox.Show("Check In realizado.");
+                            CargarHabitacionesPiso3();
+                        }
+                        break;
 
-                case "Limpiar":
-                    respuesta = MessageBox.Show(
-                        "¿Desea enviar esta habitación a limpieza?",
-                        "Confirmar",
-                        MessageBoxButtons.YesNo,
-                        MessageBoxIcon.Question);
-                    break;
+                    case "Check Out":
+                        DialogResult r2 = MessageBox.Show("¿Confirmar Check Out?", "Confirmar",
+                            MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        if (r2 == DialogResult.Yes)
+                        {
+                            int noches = (int)numNoches.Value;
+                            Factura f = servicioEstadia.RealizarCheckOut(habitacion.Id, noches);
+                            MessageBox.Show(
+                                "Factura generada.\nNCF: " + f.NCF +
+                                "\nSubtotal: RD$" + f.Subtotal.ToString("N2") +
+                                "\nITBIS: RD$" + f.ITBIS.ToString("N2") +
+                                "\nPropina: RD$" + f.Propina.ToString("N2") +
+                                "\nTotal: RD$" + f.Total.ToString("N2"),
+                                "Factura");
+                            CargarHabitacionesPiso3();
+                        }
+                        break;
 
-                default:
-                    MessageBox.Show("Seleccione una acción.");
-                    break;
+                    default:
+                        MessageBox.Show("Seleccione Check In o Check Out.");
+                        break;
+                }
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Datos inválidos.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            catch (HabitacionOcupadaException ex)
+            {
+                MessageBox.Show("La habitación " + ex.NumeroHabitacion + " está ocupada.");
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("Error de base de datos: " + ex.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 
