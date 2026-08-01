@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using HotelZormat.Negocio.Servicios;
+using System.Data.SqlClient;
 
 namespace HotelZormat.UI
 {
@@ -46,21 +47,36 @@ namespace HotelZormat.UI
                 return;
             }
 
-            Huesped h = servicio.Buscar(txtDocumento.Text);
+            try
+            {
+                Huesped h = servicio.Buscar(txtDocumento.Text);
 
-            if (h != null)
-            {
-                cboTipoDocumento.Text = h.TipoDocumento;
-                txtNombre.Text = h.Nombre;
-                txtApellido.Text = h.Apellido;
-                txtNacionalidad.Text = h.Nacionalidad;
-                txtTelefono.Text = h.Telefono;
-                txtEmail.Text = h.Email;
+                if (h != null)
+                {
+                    cboTipoDocumento.Text = h.TipoDocumento;
+                    txtNombre.Text = h.Nombre;
+                    txtApellido.Text = h.Apellido;
+                    txtNacionalidad.Text = h.Nacionalidad;
+                    txtTelefono.Text = h.Telefono;
+                    txtEmail.Text = h.Email;
+                }
+                else
+                {
+                    MessageBox.Show("No se encontró ningún huésped con ese documento.");
+                    LimpiarCampos();
+                }
             }
-            else
+            catch (SqlException ex)
             {
-                MessageBox.Show("No se encontró ningún huésped con ese documento.");
-                LimpiarCampos();
+                MessageBox.Show(
+                    "Error de conexión con la base de datos: " + ex.Message,
+                    "Error de base de datos",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -86,6 +102,14 @@ namespace HotelZormat.UI
                 MessageBox.Show("Huésped guardado correctamente.");
                 CargarLista();
                 LimpiarCampos();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(
+                    "Error de conexión con la base de datos: " + ex.Message,
+                    "Error de base de datos",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
@@ -120,6 +144,14 @@ namespace HotelZormat.UI
                     MessageBox.Show("Huésped eliminado.");
                     CargarLista();
                     LimpiarCampos();
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show(
+                        "Error de conexión con la base de datos: " + ex.Message,
+                        "Error de base de datos",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
                 }
                 catch (Exception ex)
                 {

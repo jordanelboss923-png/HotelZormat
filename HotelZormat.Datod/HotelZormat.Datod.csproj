@@ -45,9 +45,12 @@
     <Compile Include="Class1.cs" />
     <Compile Include="Conexion\ConexionDB.cs" />
     <Compile Include="ConfiguracioDBS.cs" />
+    <Compile Include="EstadiaRepositorio.cs" />
+    <Compile Include="Facturarepositorio.cs" />
     <Compile Include="HabitacionRepositorio.cs" />
     <Compile Include="HuespedRepositorio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UsuarioRepositorio.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HotelZormat.Modelo\HotelZormat.Modelo.csproj">

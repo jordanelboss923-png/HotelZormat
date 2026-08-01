@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using HotelZormat.Modelo;
 using HotelZormat.Negocio.Servicios;
+using System.Data.SqlClient;
 
 namespace HotelZormat.UI
 {
@@ -208,9 +209,7 @@ namespace HotelZormat.UI
                 if (habitacion != null)
                 {
                     cboTipo.Text = habitacion.Tipo;
-
                     CambiarColorEstado(habitacion.Estado);
-
                     ConfigurarBotones(habitacion.Estado);
                 }
                 else
@@ -226,6 +225,18 @@ namespace HotelZormat.UI
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Warning);
             }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(
+                    "Error de conexión con la base de datos: " + ex.Message,
+                    "Error de base de datos",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -239,11 +250,9 @@ namespace HotelZormat.UI
                 h.Numero = Convert.ToInt32(txtNumero.Text);
                 h.Piso = 3;
                 h.Tipo = cboTipo.Text;
-                h.Capacidad = 2; // ajusta si tienes un control para esto
+                h.Capacidad = 2;
                 h.TarifaBase = ObtenerTarifa(cboTipo.Text);
 
-                // Si el label todavía tiene el texto por defecto del diseñador,
-                // es una habitación nueva -> Disponible
                 h.Estado = (lblEstado.Text == "Estado:" || string.IsNullOrWhiteSpace(lblEstado.Text))
                     ? "Disponible"
                     : lblEstado.Text;
@@ -262,6 +271,14 @@ namespace HotelZormat.UI
             catch (HabitacionOcupadaException ex)
             {
                 MessageBox.Show("La habitación " + ex.NumeroHabitacion + " está ocupada.");
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(
+                    "Error de conexión con la base de datos: " + ex.Message,
+                    "Error de base de datos",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
@@ -305,6 +322,14 @@ namespace HotelZormat.UI
             catch (HabitacionOcupadaException ex)
             {
                 MessageBox.Show("No se puede eliminar: la habitación " + ex.NumeroHabitacion + " está ocupada.");
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(
+                    "Error de conexión con la base de datos: " + ex.Message,
+                    "Error de base de datos",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
