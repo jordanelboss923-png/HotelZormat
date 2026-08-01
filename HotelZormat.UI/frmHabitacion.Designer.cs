@@ -58,6 +58,9 @@
             this.txtDocumentoHuesped = new System.Windows.Forms.TextBox();
             this.numNoches = new System.Windows.Forms.NumericUpDown();
             this.cboTemporada = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.gbTipo.SuspendLayout();
             this.gbBuscar.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -354,7 +357,7 @@
             // 
             // numNoches
             // 
-            this.numNoches.Location = new System.Drawing.Point(250, 166);
+            this.numNoches.Location = new System.Drawing.Point(200, 166);
             this.numNoches.Minimum = new decimal(new int[] {
             1,
             0,
@@ -377,11 +380,41 @@
             this.cboTemporada.Size = new System.Drawing.Size(121, 21);
             this.cboTemporada.TabIndex = 12;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(384, 168);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(61, 13);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "Temporada";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(95, 168);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(99, 13);
+            this.label5.TabIndex = 13;
+            this.label5.Text = "Numero de Noches";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(61, 328);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(43, 13);
+            this.label9.TabIndex = 14;
+            this.label9.Text = "Cedula:";
+            // 
             // frmHabitacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(704, 361);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.cboTemporada);
             this.Controls.Add(this.numNoches);
             this.Controls.Add(this.txtDocumentoHuesped);
@@ -441,5 +474,8 @@
         private System.Windows.Forms.TextBox txtDocumentoHuesped;
         private System.Windows.Forms.NumericUpDown numNoches;
         private System.Windows.Forms.ComboBox cboTemporada;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label9;
     }
 }
