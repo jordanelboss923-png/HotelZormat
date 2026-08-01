@@ -36,5 +36,11 @@ namespace HotelZormat.UI
             frmHuesped f = new frmHuesped();
             f.ShowDialog();
         }
+
+        private void btnHabitacion_Click(object sender, EventArgs e)
+        {
+            frmHabitacion f = new frmHabitacion();
+            f.ShowDialog();
+        }
     }
 }

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.btnHuesped = new System.Windows.Forms.Button();
+            this.btnHabitacion = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnHuesped
@@ -41,11 +42,22 @@
             this.btnHuesped.UseVisualStyleBackColor = true;
             this.btnHuesped.Click += new System.EventHandler(this.btnHuesped_Click);
             // 
+            // btnHabitacion
+            // 
+            this.btnHabitacion.Location = new System.Drawing.Point(341, 195);
+            this.btnHabitacion.Name = "btnHabitacion";
+            this.btnHabitacion.Size = new System.Drawing.Size(75, 23);
+            this.btnHabitacion.TabIndex = 1;
+            this.btnHabitacion.Text = "Habitaciones";
+            this.btnHabitacion.UseVisualStyleBackColor = true;
+            this.btnHabitacion.Click += new System.EventHandler(this.btnHabitacion_Click);
+            // 
             // FrmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnHabitacion);
             this.Controls.Add(this.btnHuesped);
             this.Name = "FrmPrincipal";
             this.Text = " \"Hotel Zormat — Sistema de Gestión\"";
@@ -57,5 +69,6 @@
         #endregion
 
         private System.Windows.Forms.Button btnHuesped;
+        private System.Windows.Forms.Button btnHabitacion;
     }
 }

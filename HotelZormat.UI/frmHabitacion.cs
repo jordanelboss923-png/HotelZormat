@@ -39,6 +39,11 @@ namespace HotelZormat.UI
 
             CargarHabitacionesPiso3();
 
+            cboTemporada.Items.Clear();
+            cboTemporada.Items.Add("Alta");
+            cboTemporada.Items.Add("Media");
+            cboTemporada.Items.Add("Baja");
+
         }
         private void CargarHabitacionesPiso3()
         {
