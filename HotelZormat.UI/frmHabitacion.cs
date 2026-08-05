@@ -18,6 +18,7 @@ namespace HotelZormat.UI
     public partial class frmHabitacion : Form
     {
         private HabitacionService servicio = new HabitacionService();
+        private ReservaServicio servicioReserva = new ReservaServicio();
         public frmHabitacion()
         {
             InitializeComponent();
@@ -378,6 +379,64 @@ namespace HotelZormat.UI
             if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
             {
                 e.Handled = true; // bloquea la tecla
+            }
+        }
+
+        private void btnReservar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int numeroHab = Convert.ToInt32(txtNumero.Text);
+                Habitacion habitacion = servicio.Buscar(numeroHab);
+
+                if (habitacion == null)
+                {
+                    MessageBox.Show("Habitación no encontrada.");
+                    return;
+                }
+
+                if (string.IsNullOrWhiteSpace(txtDocumentoHuesped.Text))
+                {
+                    MessageBox.Show("Escriba el documento del huésped.");
+                    return;
+                }
+
+                HuespedService servicioHuesped = new HuespedService();
+                Huesped huesped = servicioHuesped.Buscar(txtDocumentoHuesped.Text);
+
+                if (huesped == null)
+                {
+                    MessageBox.Show("Huésped no encontrado. Regístrelo primero en el módulo de Huéspedes.");
+                    return;
+                }
+
+                DialogResult respuesta = MessageBox.Show(
+                    "¿Confirmar reserva para la habitación " + habitacion.Numero + "?",
+                    "Confirmar",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
+
+                if (respuesta == DialogResult.Yes)
+                {
+                    servicioReserva.CrearReserva(habitacion.Id, huesped.Id, DateTime.Now.AddDays(1));
+                    MessageBox.Show("Reserva creada con éxito, en estado Pendiente.");
+                }
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Datos inválidos.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(
+                    "Error de conexión con la base de datos: " + ex.Message,
+                    "Error de base de datos",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
     }

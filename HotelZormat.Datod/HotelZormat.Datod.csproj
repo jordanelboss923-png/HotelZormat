@@ -50,6 +50,7 @@
     <Compile Include="HabitacionRepositorio.cs" />
     <Compile Include="HuespedRepositorio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReservaRepositorio.cs" />
     <Compile Include="UsuarioRepositorio.cs" />
   </ItemGroup>
   <ItemGroup>

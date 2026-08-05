@@ -274,6 +274,7 @@
             this.btnReservar.TabIndex = 0;
             this.btnReservar.Text = "Reservar";
             this.btnReservar.UseVisualStyleBackColor = true;
+            this.btnReservar.Click += new System.EventHandler(this.btnReservar_Click);
             // 
             // groupBox2
             // 
