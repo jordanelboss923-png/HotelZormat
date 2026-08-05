@@ -42,10 +42,20 @@ namespace HotelZormat.UI
 
         private void menuHabitaciones_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            frmHabitacion f = new frmHabitacion();
-            f.ShowDialog();
-            this.Show();
+            // Evita abrir el mismo formulario duplicado si ya está abierto
+            foreach (Form f in this.MdiChildren)
+            {
+                if (f is frmHabitacion)
+                {
+                    f.Activate();
+                    return;
+                }
+            }
+
+            frmHabitacion nuevo = new frmHabitacion();
+            nuevo.MdiParent = this;   // <- esto es lo que lo mete "dentro" de FrmPrincipal
+            nuevo.WindowState = FormWindowState.Maximized; // que rellene todo el espacio interno
+            nuevo.Show();             // Show(), no ShowDialog() -- MDI no usa ShowDialog
         }
 
         private void menuHuespedes_Click(object sender, EventArgs e)
@@ -59,22 +69,25 @@ namespace HotelZormat.UI
         private void menuCerrarSesion_Click(object sender, EventArgs e)
         {
             DialogResult respuesta = MessageBox.Show(
-        "¿Seguro que desea cerrar sesión?",
-        "Confirmar",
-        MessageBoxButtons.YesNo,
-        MessageBoxIcon.Question);
+         "¿Seguro que desea cerrar sesión?",
+         "Confirmar",
+         MessageBoxButtons.YesNo,
+         MessageBoxIcon.Question);
 
             if (respuesta == DialogResult.Yes)
             {
-                this.Hide();
+                this.Close();
+
                 frmLogin login = new frmLogin();
                 if (login.ShowDialog() == DialogResult.OK)
                 {
-                    // Vuelve a cargar el usuario logueado y refresca el menú
                     FrmPrincipal nuevo = new FrmPrincipal(login.UsuarioLogueado);
                     nuevo.Show();
                 }
-                this.Close();
+                else
+                {
+                    Application.Exit();
+                }
             }
         }
     }
