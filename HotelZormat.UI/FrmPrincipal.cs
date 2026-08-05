@@ -60,10 +60,19 @@ namespace HotelZormat.UI
 
         private void menuHuespedes_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            frmHuesped f = new frmHuesped();
-            f.ShowDialog();
-            this.Show();
+            foreach (Form f in this.MdiChildren)
+            {
+                if (f is frmHuesped)
+                {
+                    f.Activate();
+                    return;
+                }
+            }
+
+            frmHuesped nuevo = new frmHuesped();
+            nuevo.MdiParent = this;
+            nuevo.WindowState = FormWindowState.Maximized;
+            nuevo.Show();
         }
 
         private void menuCerrarSesion_Click(object sender, EventArgs e)
