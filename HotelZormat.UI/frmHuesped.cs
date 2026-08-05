@@ -177,9 +177,13 @@ namespace HotelZormat.UI
             txtEmail.Text = "";
         }
 
-        private void guna2Button1_Click(object sender, EventArgs e)
+        private void SoloNumeros_KeyPress(object sender, KeyPressEventArgs e)
         {
-
+            // Permite dígitos y la tecla de borrar (Backspace)
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // bloquea la tecla
+            }
         }
     }
 }

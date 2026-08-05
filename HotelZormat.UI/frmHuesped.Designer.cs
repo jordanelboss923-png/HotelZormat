@@ -61,6 +61,7 @@
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.Size = new System.Drawing.Size(100, 20);
             this.txtTelefono.TabIndex = 1;
+            this.txtTelefono.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SoloNumeros_KeyPress);
             // 
             // txtNacionalidad
             // 
@@ -132,6 +133,7 @@
             // 
             // cboTipoDocumento
             // 
+            this.cboTipoDocumento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboTipoDocumento.FormattingEnabled = true;
             this.cboTipoDocumento.Location = new System.Drawing.Point(315, 49);
             this.cboTipoDocumento.Name = "cboTipoDocumento";
@@ -223,6 +225,8 @@
             this.Controls.Add(this.txtNacionalidad);
             this.Controls.Add(this.txtTelefono);
             this.Controls.Add(this.txtDocumento);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "frmHuesped";
             this.Text = "frmHuesped";
             this.Load += new System.EventHandler(this.frmHuesped_Load);

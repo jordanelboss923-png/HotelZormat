@@ -20,29 +20,62 @@ namespace HotelZormat.UI
         {
             InitializeComponent();
             usuarioActual = usuario;
+
+            menuPrincipal.BackColor = Color.FromArgb(30, 30, 45);
+            menuPrincipal.ForeColor = Color.White;
         }
 
         private void FrmPrincipal_Load(object sender, EventArgs e)
         {
             this.Text = "HotelZormat - " + usuarioActual.NombreCompleto + " (" + usuarioActual.Rol + ")";
 
-            // Ejemplo: solo el Administrador puede eliminar habitaciones/huéspedes
             if (!usuarioActual.EsAdministrador())
             {
-                // btnEliminarHabitacion.Enabled = false; // ajusta al nombre real de tu botón/menú
+                menuBitacora.Visible = false; // solo Admin ve Bitácora
             }
         }
 
-        private void btnHuesped_Click(object sender, EventArgs e)
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
-            frmHuesped f = new frmHuesped();
-            f.ShowDialog();
+
         }
 
-        private void btnHabitacion_Click(object sender, EventArgs e)
+        private void menuHabitaciones_Click(object sender, EventArgs e)
         {
+            this.Hide();
             frmHabitacion f = new frmHabitacion();
             f.ShowDialog();
+            this.Show();
+        }
+
+        private void menuHuespedes_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmHuesped f = new frmHuesped();
+            f.ShowDialog();
+            this.Show();
+        }
+
+        private void menuCerrarSesion_Click(object sender, EventArgs e)
+        {
+            DialogResult respuesta = MessageBox.Show(
+        "¿Seguro que desea cerrar sesión?",
+        "Confirmar",
+        MessageBoxButtons.YesNo,
+        MessageBoxIcon.Question);
+
+            if (respuesta == DialogResult.Yes)
+            {
+                this.Hide();
+                frmLogin login = new frmLogin();
+                if (login.ShowDialog() == DialogResult.OK)
+                {
+                    // Vuelve a cargar el usuario logueado y refresca el menú
+                    FrmPrincipal nuevo = new FrmPrincipal(login.UsuarioLogueado);
+                    nuevo.Show();
+                }
+                this.Close();
+            }
         }
     }
 }

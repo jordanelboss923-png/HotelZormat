@@ -178,6 +178,7 @@
             this.txtNumero.Name = "txtNumero";
             this.txtNumero.Size = new System.Drawing.Size(131, 20);
             this.txtNumero.TabIndex = 6;
+            this.txtNumero.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SoloNumeros_KeyPress);
             // 
             // label1
             // 
@@ -374,6 +375,7 @@
             // 
             // cboTemporada
             // 
+            this.cboTemporada.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboTemporada.FormattingEnabled = true;
             this.cboTemporada.Location = new System.Drawing.Point(451, 165);
             this.cboTemporada.Name = "cboTemporada";
