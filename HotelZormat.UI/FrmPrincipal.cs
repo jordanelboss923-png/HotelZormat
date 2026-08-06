@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -42,20 +43,20 @@ namespace HotelZormat.UI
 
         private void menuHabitaciones_Click(object sender, EventArgs e)
         {
-            // Evita abrir el mismo formulario duplicado si ya está abierto
             foreach (Form f in this.MdiChildren)
             {
                 if (f is frmHabitacion)
                 {
+                    f.WindowState = FormWindowState.Maximized;   // ← esto es lo que faltaba
                     f.Activate();
                     return;
                 }
             }
 
             frmHabitacion nuevo = new frmHabitacion();
-            nuevo.MdiParent = this;   // <- esto es lo que lo mete "dentro" de FrmPrincipal
-            nuevo.WindowState = FormWindowState.Maximized; // que rellene todo el espacio interno
-            nuevo.Show();             // Show(), no ShowDialog() -- MDI no usa ShowDialog
+            nuevo.MdiParent = this;
+            nuevo.WindowState = FormWindowState.Maximized;
+            nuevo.Show();
         }
 
         private void menuHuespedes_Click(object sender, EventArgs e)
@@ -64,6 +65,7 @@ namespace HotelZormat.UI
             {
                 if (f is frmHuesped)
                 {
+                    f.WindowState = FormWindowState.Maximized;   // ← lo mismo aquí
                     f.Activate();
                     return;
                 }
@@ -74,6 +76,8 @@ namespace HotelZormat.UI
             nuevo.WindowState = FormWindowState.Maximized;
             nuevo.Show();
         }
+       
+        
 
         private void menuCerrarSesion_Click(object sender, EventArgs e)
         {
@@ -98,6 +102,24 @@ namespace HotelZormat.UI
                     Application.Exit();
                 }
             }
+        }
+
+        private void menuReservas_Click(object sender, EventArgs e)
+        {
+            foreach (Form f in this.MdiChildren)
+            {
+                if (f is frmReservas)
+                {
+                    f.WindowState = FormWindowState.Maximized;
+                    f.Activate();
+                    return;
+                }
+            }
+
+            frmReservas nuevo = new frmReservas();
+            nuevo.MdiParent = this;
+            nuevo.WindowState = FormWindowState.Maximized;
+            nuevo.Show();
         }
     }
 }
