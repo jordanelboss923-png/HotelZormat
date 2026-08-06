@@ -23,6 +23,11 @@ namespace HotelZormat.UI
 
         private void frmReservas_Load(object sender, EventArgs e)
         {
+            dgvReservas.AllowUserToAddRows = false;
+            dgvReservas.ReadOnly = true;
+            dgvReservas.MultiSelect = false;
+            dgvReservas.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
             ConfigurarColumnas();
             CargarLista();
         }
@@ -82,6 +87,13 @@ namespace HotelZormat.UI
             }
 
             DataGridViewRow fila = dgvReservas.SelectedRows[0];
+
+            if (fila.IsNewRow || fila.Cells["IdReserva"].Value == null)
+            {
+                MessageBox.Show("Seleccione una reserva válida de la tabla.");
+                return null;
+            }
+
             return Convert.ToInt32(fila.Cells["IdReserva"].Value);
         }
         private void btnConfirmarReserva_Click(object sender, EventArgs e)
