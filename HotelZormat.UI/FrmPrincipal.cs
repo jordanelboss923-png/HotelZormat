@@ -121,5 +121,23 @@ namespace HotelZormat.UI
             nuevo.WindowState = FormWindowState.Maximized;
             nuevo.Show();
         }
+
+        private void menuBitacora_Click(object sender, EventArgs e)
+        {
+            foreach (Form f in this.MdiChildren)
+            {
+                if (f is frmBitacora)
+                {
+                    f.WindowState = FormWindowState.Maximized;
+                    f.Activate();
+                    return;
+                }
+            }
+
+            frmBitacora nuevo = new frmBitacora();
+            nuevo.MdiParent = this;
+            nuevo.WindowState = FormWindowState.Maximized;
+            nuevo.Show();
+        }
     }
 }

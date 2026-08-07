@@ -88,6 +88,7 @@
             this.menuBitacora.Name = "menuBitacora";
             this.menuBitacora.Size = new System.Drawing.Size(62, 20);
             this.menuBitacora.Text = "Bitácora";
+            this.menuBitacora.Click += new System.EventHandler(this.menuBitacora_Click);
             // 
             // menuCerrarSesion
             // 
