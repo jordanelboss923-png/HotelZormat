@@ -465,12 +465,6 @@ namespace HotelZormat.UI
             lblEstado.Text = "Estado:";
             lstHabitaciones.ClearSelected();
         }
-
-        private void btnConfirmar_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
         
     }
 }
