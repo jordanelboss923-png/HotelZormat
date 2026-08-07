@@ -139,5 +139,23 @@ namespace HotelZormat.UI
             nuevo.WindowState = FormWindowState.Maximized;
             nuevo.Show();
         }
+
+        private void menuReportes_Click(object sender, EventArgs e)
+        {
+            foreach (Form f in this.MdiChildren)
+            {
+                if (f is frmReportes)
+                {
+                    f.WindowState = FormWindowState.Maximized;
+                    f.Activate();
+                    return;
+                }
+            }
+
+            frmReportes nuevo = new frmReportes();
+            nuevo.MdiParent = this;
+            nuevo.WindowState = FormWindowState.Maximized;
+            nuevo.Show();
+        }
     }
 }

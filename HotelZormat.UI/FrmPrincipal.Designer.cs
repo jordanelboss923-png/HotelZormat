@@ -82,6 +82,7 @@
             this.menuReportes.Name = "menuReportes";
             this.menuReportes.Size = new System.Drawing.Size(65, 20);
             this.menuReportes.Text = "Reportes";
+            this.menuReportes.Click += new System.EventHandler(this.menuReportes_Click);
             // 
             // menuBitacora
             // 
