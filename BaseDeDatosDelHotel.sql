@@ -1,3 +1,6 @@
+CREATE DATABASE HotelZormatDB;
+GO
+
 USE HotelZormatDB;
 GO
 
@@ -41,6 +44,7 @@ CREATE TABLE Estadia (
     Estado VARCHAR(20) NOT NULL DEFAULT 'Activa' CHECK (Estado IN ('Activa','Cerrada'))
 );
 
+
 CREATE TABLE Factura (
     IdFactura INT IDENTITY(1,1) PRIMARY KEY,
     IdEstadia INT NOT NULL FOREIGN KEY REFERENCES Estadia(IdEstadia),
@@ -57,6 +61,19 @@ CREATE TABLE Bitacora (
     IdUsuario INT NOT NULL FOREIGN KEY REFERENCES Usuario(IdUsuario),
     Accion VARCHAR(50) NOT NULL,
     FechaHora DATETIME NOT NULL DEFAULT GETDATE()
+);
+
+USE HotelZormatDB;
+GO
+
+CREATE TABLE Reserva (
+    IdReserva INT IDENTITY(1,1) PRIMARY KEY,
+    IdHabitacion INT NOT NULL FOREIGN KEY REFERENCES Habitacion(IdHabitacion),
+    IdHuesped INT NOT NULL FOREIGN KEY REFERENCES Huesped(IdHuesped),
+    FechaReserva DATETIME NOT NULL DEFAULT GETDATE(),
+    FechaEntradaEstimada DATETIME NOT NULL,
+    Estado VARCHAR(20) NOT NULL DEFAULT 'Pendiente'
+        CHECK (Estado IN ('Pendiente','Confirmada','Cancelada'))
 );
 
 -- Datos iniciales
