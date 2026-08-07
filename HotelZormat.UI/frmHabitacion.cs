@@ -19,9 +19,13 @@ namespace HotelZormat.UI
     {
         private HabitacionService servicio = new HabitacionService();
         private ReservaServicio servicioReserva = new ReservaServicio();
-        public frmHabitacion()
+        private EstadiaService servicioEstadia = new EstadiaService();
+        private BitacoraServicio servicioBitacora = new BitacoraServicio();
+        private Usuario usuarioActual;   // ← nuevo
+        public frmHabitacion(Usuario usuario)
         {
             InitializeComponent();
+            usuarioActual = usuario;
         }
 
         private void frmHabitacion_Load(object sender, EventArgs e)
@@ -162,7 +166,7 @@ namespace HotelZormat.UI
             }
         }
 
-        private EstadiaService servicioEstadia = new EstadiaService();
+        
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
             try
@@ -183,6 +187,7 @@ namespace HotelZormat.UI
                         if (r1 == DialogResult.Yes)
                         {
                             servicioEstadia.RealizarCheckIn(habitacion.Id, huesped.Id, cboTemporada.Text);
+                            servicioBitacora.Registrar(usuarioActual.Id, "Check In habitación " + habitacion.Numero);
                             MessageBox.Show("Check In realizado.");
                             CargarHabitacionesPiso3();
                         }
@@ -195,6 +200,7 @@ namespace HotelZormat.UI
                         {
                             int noches = (int)numNoches.Value;
                             Factura f = servicioEstadia.RealizarCheckOut(habitacion.Id, noches);
+                            servicioBitacora.Registrar(usuarioActual.Id, "Check Out habitación " + habitacion.Numero);
                             MessageBox.Show(
                                 "Factura generada.\nNCF: " + f.NCF +
                                 "\nSubtotal: RD$" + f.Subtotal.ToString("N2") +

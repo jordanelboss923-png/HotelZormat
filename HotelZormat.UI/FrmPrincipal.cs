@@ -47,13 +47,13 @@ namespace HotelZormat.UI
             {
                 if (f is frmHabitacion)
                 {
-                    f.WindowState = FormWindowState.Maximized;   // ← esto es lo que faltaba
+                    f.WindowState = FormWindowState.Maximized;
                     f.Activate();
                     return;
                 }
             }
 
-            frmHabitacion nuevo = new frmHabitacion();
+            frmHabitacion nuevo = new frmHabitacion(usuarioActual);   // ← se lo pasas aquí
             nuevo.MdiParent = this;
             nuevo.WindowState = FormWindowState.Maximized;
             nuevo.Show();

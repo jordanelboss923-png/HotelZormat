@@ -37,6 +37,8 @@ namespace HotelZormat.UI
                 if (u != null)
                 {
                     UsuarioLogueado = u;
+                    BitacoraServicio bitacora = new BitacoraServicio();
+                    bitacora.Registrar(u.Id, "Inicio de sesión");
                     this.DialogResult = DialogResult.OK;
                     this.Close();
                 }
