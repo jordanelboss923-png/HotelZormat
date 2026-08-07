@@ -439,5 +439,32 @@ namespace HotelZormat.UI
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void btnCheckIn_Click(object sender, EventArgs e)
+        {
+            cboAccion.Text = "Check In";
+            btnConfirmar_Click(sender, e);
+        }
+
+        private void btnCheckOut_Click(object sender, EventArgs e)
+        {
+            cboAccion.Text = "Check Out";
+            btnConfirmar_Click(sender, e);
+        }
+
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            txtNumero.Text = "";
+            cboTipo.Text = "";
+            lblEstado.Text = "Estado:";
+            lstHabitaciones.ClearSelected();
+        }
+
+        private void btnConfirmar_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        
     }
 }
