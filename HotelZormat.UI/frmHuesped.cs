@@ -34,9 +34,18 @@ namespace HotelZormat.UI
         private void CargarLista()
         {
             lstHuespedes.Items.Clear();
+
             foreach (Huesped h in servicio.ObtenerTodos())
             {
-                lstHuespedes.Items.Add(h.NumeroDocumento + " - " + h.NombreCompleto());
+                lstHuespedes.Items.Add(
+                    "Documento: " + h.NumeroDocumento +
+                    " | Tipo: " + h.TipoDocumento +
+                    " | Nombre: " + h.Nombre +
+                    " | Apellido: " + h.Apellido +
+                    " | Nacionalidad: " + h.Nacionalidad +
+                    " | Teléfono: " + h.Telefono +
+                    " | Email: " + h.Email
+                );
             }
         }
 

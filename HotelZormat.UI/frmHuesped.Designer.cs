@@ -298,7 +298,7 @@
             this.lstHuespedes.ItemHeight = 17;
             this.lstHuespedes.Location = new System.Drawing.Point(450, 118);
             this.lstHuespedes.Name = "lstHuespedes";
-            this.lstHuespedes.Size = new System.Drawing.Size(460, 395);
+            this.lstHuespedes.Size = new System.Drawing.Size(745, 395);
             this.lstHuespedes.TabIndex = 20;
             // 
             // frmHuesped
