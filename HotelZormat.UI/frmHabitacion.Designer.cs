@@ -2,15 +2,8 @@
 {
     partial class frmHabitacion
     {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -22,12 +15,10 @@
 
         #region Windows Form Designer generated code
 
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
+            this.panelSuperior = new Guna.UI2.WinForms.Guna2Panel();
+            this.lblTitulo = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.lblIcono = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -61,6 +52,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
+            this.panelSuperior.SuspendLayout();
             this.gbTipo.SuspendLayout();
             this.gbBuscar.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -68,6 +60,27 @@
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numNoches)).BeginInit();
             this.SuspendLayout();
+            // 
+            // panelSuperior
+            // 
+            this.panelSuperior.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelSuperior.FillColor = System.Drawing.Color.FromArgb(100, 88, 255);
+            this.panelSuperior.Controls.Add(this.lblTitulo);
+            this.panelSuperior.Location = new System.Drawing.Point(0, 0);
+            this.panelSuperior.Name = "panelSuperior";
+            this.panelSuperior.Size = new System.Drawing.Size(704, 60);
+            this.panelSuperior.TabIndex = 20;
+            // 
+            // lblTitulo
+            // 
+            this.lblTitulo.AutoSize = true;
+            this.lblTitulo.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
+            this.lblTitulo.ForeColor = System.Drawing.Color.White;
+            this.lblTitulo.Location = new System.Drawing.Point(30, 14);
+            this.lblTitulo.Name = "lblTitulo";
+            this.lblTitulo.Size = new System.Drawing.Size(260, 30);
+            this.lblTitulo.TabIndex = 0;
+            this.lblTitulo.Text = "Gestión de Habitaciones";
             // 
             // label4
             // 
@@ -113,7 +126,7 @@
             this.gbTipo.Controls.Add(this.label7);
             this.gbTipo.Controls.Add(this.lblIcono);
             this.gbTipo.Controls.Add(this.label6);
-            this.gbTipo.Location = new System.Drawing.Point(31, 28);
+            this.gbTipo.Location = new System.Drawing.Point(31, 98);
             this.gbTipo.Name = "gbTipo";
             this.gbTipo.Size = new System.Drawing.Size(200, 132);
             this.gbTipo.TabIndex = 7;
@@ -147,7 +160,7 @@
             this.gbBuscar.Controls.Add(this.label1);
             this.gbBuscar.Controls.Add(this.lblHabitacion);
             this.gbBuscar.Controls.Add(this.label8);
-            this.gbBuscar.Location = new System.Drawing.Point(250, 28);
+            this.gbBuscar.Location = new System.Drawing.Point(250, 98);
             this.gbBuscar.Name = "gbBuscar";
             this.gbBuscar.Size = new System.Drawing.Size(282, 132);
             this.gbBuscar.TabIndex = 8;
@@ -211,7 +224,7 @@
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.lstHabitaciones);
-            this.groupBox3.Location = new System.Drawing.Point(549, 28);
+            this.groupBox3.Location = new System.Drawing.Point(549, 98);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(123, 132);
             this.groupBox3.TabIndex = 8;
@@ -232,7 +245,7 @@
             this.groupBox1.Controls.Add(this.btnCheckOut);
             this.groupBox1.Controls.Add(this.btnCheckIn);
             this.groupBox1.Controls.Add(this.btnReservar);
-            this.groupBox1.Location = new System.Drawing.Point(31, 192);
+            this.groupBox1.Location = new System.Drawing.Point(31, 262);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(638, 59);
             this.groupBox1.TabIndex = 9;
@@ -287,7 +300,7 @@
             this.groupBox2.Controls.Add(this.btnConfirmar);
             this.groupBox2.Controls.Add(this.cboAccion);
             this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Location = new System.Drawing.Point(31, 268);
+            this.groupBox2.Location = new System.Drawing.Point(31, 338);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(638, 61);
             this.groupBox2.TabIndex = 10;
@@ -358,14 +371,14 @@
             // 
             // txtDocumentoHuesped
             // 
-            this.txtDocumentoHuesped.Location = new System.Drawing.Point(110, 321);
+            this.txtDocumentoHuesped.Location = new System.Drawing.Point(110, 391);
             this.txtDocumentoHuesped.Name = "txtDocumentoHuesped";
             this.txtDocumentoHuesped.Size = new System.Drawing.Size(100, 20);
             this.txtDocumentoHuesped.TabIndex = 11;
             // 
             // numNoches
             // 
-            this.numNoches.Location = new System.Drawing.Point(200, 166);
+            this.numNoches.Location = new System.Drawing.Point(200, 236);
             this.numNoches.Minimum = new decimal(new int[] {
             1,
             0,
@@ -384,7 +397,7 @@
             // 
             this.cboTemporada.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboTemporada.FormattingEnabled = true;
-            this.cboTemporada.Location = new System.Drawing.Point(451, 165);
+            this.cboTemporada.Location = new System.Drawing.Point(451, 235);
             this.cboTemporada.Name = "cboTemporada";
             this.cboTemporada.Size = new System.Drawing.Size(121, 21);
             this.cboTemporada.TabIndex = 12;
@@ -392,7 +405,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(384, 168);
+            this.label3.Location = new System.Drawing.Point(384, 238);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(61, 13);
             this.label3.TabIndex = 9;
@@ -401,7 +414,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(95, 168);
+            this.label5.Location = new System.Drawing.Point(95, 238);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(99, 13);
             this.label5.TabIndex = 13;
@@ -410,7 +423,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(61, 328);
+            this.label9.Location = new System.Drawing.Point(61, 398);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(43, 13);
             this.label9.TabIndex = 14;
@@ -420,7 +433,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(704, 361);
+            this.ClientSize = new System.Drawing.Size(704, 431);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label3);
@@ -432,12 +445,15 @@
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.gbBuscar);
             this.Controls.Add(this.gbTipo);
+            this.Controls.Add(this.panelSuperior);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "frmHabitacion";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "HotelZormat-Gestion de Habitaciones";
+            this.Text = "HotelZormat - Gestión de Habitaciones";
             this.Load += new System.EventHandler(this.frmHabitacion_Load);
+            this.panelSuperior.ResumeLayout(false);
+            this.panelSuperior.PerformLayout();
             this.gbTipo.ResumeLayout(false);
             this.gbTipo.PerformLayout();
             this.gbBuscar.ResumeLayout(false);
@@ -453,6 +469,8 @@
         }
 
         #endregion
+        private Guna.UI2.WinForms.Guna2Panel panelSuperior;
+        private System.Windows.Forms.Label lblTitulo;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label lblIcono;
         private System.Windows.Forms.Label label6;

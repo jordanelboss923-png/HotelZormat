@@ -57,13 +57,11 @@ namespace HotelZormat.UI
 
             foreach (Habitacion h in servicio.ObtenerTodas())
             {
-                if (h.Piso == 3)
-                {
-                    lstHabitaciones.Items.Add(
-                        h.Numero + " - " +
-                        h.Tipo + " - " +
-                        h.Estado);
-                }
+                lstHabitaciones.Items.Add(
+                    "Piso " + h.Piso + " - " +
+                    h.Numero + " - " +
+                    h.Tipo + " - " +
+                    h.Estado);
             }
         }
         private void cboTipo_SelectedIndexChanged(object sender, EventArgs e)
@@ -150,6 +148,7 @@ namespace HotelZormat.UI
             {
                 case "Disponible":
                     btnCheckIn.Enabled = true;
+                    btnReservar.Enabled = true;
                     break;
 
                 case "Ocupada":
@@ -157,7 +156,7 @@ namespace HotelZormat.UI
                     break;
 
                 case "Reservada":
-                    btnReservar.Enabled = true;
+                    btnCheckIn.Enabled = true;
                     break;
 
                 case "Limpieza":
@@ -178,6 +177,12 @@ namespace HotelZormat.UI
                 switch (cboAccion.Text)
                 {
                     case "Check In":
+                        if (string.IsNullOrWhiteSpace(cboTemporada.Text))
+                        {
+                            MessageBox.Show("Seleccione la temporada antes de hacer Check In.");
+                            return;
+                        }
+
                         HuespedService servicioHuesped = new HuespedService();
                         Huesped huesped = servicioHuesped.Buscar(txtDocumentoHuesped.Text);
                         if (huesped == null) { MessageBox.Show("Huésped no encontrado."); return; }
@@ -460,10 +465,62 @@ namespace HotelZormat.UI
 
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
-            txtNumero.Text = "";
-            cboTipo.Text = "";
-            lblEstado.Text = "Estado:";
-            lstHabitaciones.ClearSelected();
+            try
+            {
+                int numero = Convert.ToInt32(txtNumero.Text);
+                Habitacion habitacion = servicio.Buscar(numero);
+
+                if (habitacion == null)
+                {
+                    MessageBox.Show("Habitación no encontrada.");
+                    return;
+                }
+
+                if (habitacion.Estado != "Limpieza")
+                {
+                    MessageBox.Show("Esta habitación no está en proceso de limpieza.");
+                    return;
+                }
+
+                DialogResult respuesta = MessageBox.Show(
+                    "¿Confirmar que la habitación " + habitacion.Numero + " ya fue limpiada?",
+                    "Confirmar",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
+
+                if (respuesta == DialogResult.Yes)
+                {
+                    habitacion.Estado = "Disponible";
+                    servicio.Guardar(habitacion);
+
+                    servicioBitacora.Registrar(usuarioActual.Id, "Habitación " + habitacion.Numero + " marcada como limpia");
+
+                    MessageBox.Show("Habitación marcada como Disponible.");
+                    CargarHabitacionesPiso3();
+                }
+
+                txtNumero.Text = "";
+                cboTipo.Text = "";
+                lblEstado.Text = "Estado:";
+                lstHabitaciones.ClearSelected();
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Debe escribir un número válido.",
+                    "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(
+                    "Error de conexión con la base de datos: " + ex.Message,
+                    "Error de base de datos",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
         
     }

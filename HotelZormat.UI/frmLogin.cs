@@ -18,6 +18,7 @@ namespace HotelZormat.UI
     {
         private UsuarioService servicio = new UsuarioService();
         public Usuario UsuarioLogueado { get; private set; }
+
         public frmLogin()
         {
             InitializeComponent();
@@ -58,4 +59,6 @@ namespace HotelZormat.UI
             }
         }
     }
+
+
 }
